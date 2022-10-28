@@ -12,7 +12,7 @@ const Update = ({ match }) => {
     publicationDate: ''
   })
   useEffect(() => {
-    axios.get(`/api/libros/${match.params._id}`).then(response => {
+    axios.get(`/api/books/${match.params._id}`).then(response => {
       response.data.publicationDate = response.data.publicationDate.slice(0, 10)
       setBook(response.data)
     })
@@ -20,7 +20,7 @@ const Update = ({ match }) => {
 
   const [authors, setAuthors] = useState([])
   useEffect(() => {
-    axios.get('/api/autores/').then(response => {
+    axios.get('/api/authors/').then(response => {
       setAuthors(
         response.data.map(author => ({
           text: `${author.givenName} ${author.lastName}`,
@@ -38,7 +38,7 @@ const Update = ({ match }) => {
 
   const handleFormSubmission = () => {
     axios
-      .put(`/api/libros/${match.params._id}`, book)
+      .put(`/api/books/${match.params._id}`, book)
       .then(() => {
         setRedirect(true)
       })
@@ -54,7 +54,7 @@ const Update = ({ match }) => {
   return (
     <>
       {redirect ? (
-        <Redirect to='/libros' push />
+        <Redirect to='/books' push />
       ) : (
         <>
           <Header as='h2'>Editar</Header>

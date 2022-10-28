@@ -10,7 +10,7 @@ const Books = ({ match }) => {
   return (
     <>
       <Header as='h1' textAlign='center'>
-        Libros
+        Books
       </Header>
       <Segment>
         <Switch>

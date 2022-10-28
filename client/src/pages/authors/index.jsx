@@ -10,7 +10,7 @@ const Authors = ({ match }) => {
   return (
     <>
       <Header as='h1' textAlign='center'>
-        Autores
+        Authors
       </Header>
       <Segment>
         <Switch>

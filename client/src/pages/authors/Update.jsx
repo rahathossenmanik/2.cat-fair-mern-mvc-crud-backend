@@ -12,7 +12,7 @@ const Update = ({ match }) => {
     birthdate: ''
   })
   useEffect(() => {
-    axios.get(`/api/autores/${match.params._id}`).then(response => {
+    axios.get(`/api/authors/${match.params._id}`).then(response => {
       response.data.birthdate = response.data.birthdate.slice(0, 10)
       setAuthor(response.data)
     })
@@ -26,7 +26,7 @@ const Update = ({ match }) => {
 
   const handleFormSubmission = () => {
     axios
-      .put(`/api/autores/${match.params._id}`, author)
+      .put(`/api/authors/${match.params._id}`, author)
       .then(() => {
         setRedirect(true)
       })
@@ -42,7 +42,7 @@ const Update = ({ match }) => {
   return (
     <>
       {redirect ? (
-        <Redirect to='/autores' push />
+        <Redirect to='/authors' push />
       ) : (
         <>
           <Header as='h2'>Editar</Header>

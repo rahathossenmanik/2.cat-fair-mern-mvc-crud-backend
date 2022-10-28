@@ -20,8 +20,8 @@ mongoose.connect(mongo_uri, { useNewUrlParser: true, useFindAndModify: false })
 const app = express()
 
 app.use(express.json())
-app.use('/api/autores', authors)
-app.use('/api/libros', books)
+app.use('/api/authors', authors)
+app.use('/api/books', books)
 
 app.listen({ port }, () => {
   console.log(`Servidor listo en http://localhost:${port}`)

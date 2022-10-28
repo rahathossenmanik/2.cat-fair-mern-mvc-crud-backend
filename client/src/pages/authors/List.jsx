@@ -6,7 +6,7 @@ import { Button, Header, Grid, Table } from 'semantic-ui-react'
 const List = ({ match }) => {
   const [authors, setAuthors] = useState([])
   const loadAuthors = () => {
-    axios.get('/api/autores/').then(response => {
+    axios.get('/api/authors/').then(response => {
       setAuthors(response.data)
     })
   }
@@ -15,7 +15,7 @@ const List = ({ match }) => {
   }, [])
 
   const deleteAuthor = _id => {
-    axios.delete(`/api/autores/${_id}`).then(() => {
+    axios.delete(`/api/authors/${_id}`).then(() => {
       loadAuthors()
     })
   }

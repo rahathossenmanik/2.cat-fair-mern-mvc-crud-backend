@@ -20,7 +20,7 @@ const Create = () => {
 
   const handleFormSubmission = () => {
     axios
-      .post('/api/autores', author)
+      .post('/api/authors', author)
       .then(() => {
         setRedirect(true)
       })
@@ -45,7 +45,7 @@ const Create = () => {
   return (
     <>
       {redirect ? (
-        <Redirect to='/autores' push />
+        <Redirect to='/authors' push />
       ) : (
         <>
           <Header as='h2'>Crear</Header>
