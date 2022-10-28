@@ -5,14 +5,14 @@ const authors = require('./routes/authors')
 const books = require('./routes/books')
 
 const port = 5000
-const mongo_uri = 'mongodb://localhost:27017/mvc'
+const mongo_uri = 'mongodb://localhost:27017/mern-mvc-crud'
 
 mongoose.connect(mongo_uri, { useNewUrlParser: true, useFindAndModify: false })
   .then(() => {
     console.log(`Conectado a la base de datos: ${mongo_uri}`)
   })
   .catch(err => {
-    console.log('Error al conectarse a la base de datos')
+    console.log(err)
     console.log('Terminando la aplicación ahora...')
     process.exit()
   })
