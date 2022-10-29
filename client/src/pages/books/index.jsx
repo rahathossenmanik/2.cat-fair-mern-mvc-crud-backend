@@ -14,7 +14,7 @@ const Books = ({ match }) => {
 			</Header>
 			<Segment>
 				<Routes>
-					<Route exact path={match.path} component={List} />
+					<Route path={match.path} component={List} />
 					<Route path={`${match.path}/crear`} component={Create} />
 					<Route path={`${match.path}/:_id`} component={Update} />
 				</Routes>

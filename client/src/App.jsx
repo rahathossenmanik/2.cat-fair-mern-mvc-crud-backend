@@ -17,13 +17,13 @@ const App = () => {
 			<Router>
 				<Segment inverted>
 					<Menu as='nav' inverted pointing secondary>
-						<Menu.Item as={NavLink} to='/' exact name='inicio' />
+						<Menu.Item as={NavLink} to='/' name='inicio' />
 						<Menu.Item as={NavLink} to='/authors' name='authors' />
 						<Menu.Item as={NavLink} to='/books' name='books' />
 					</Menu>
 				</Segment>
 				<Routes>
-					<Route path='/' exact component={Home} />
+					<Route path='/' component={Home} />
 					<Route path='/authors' component={Authors} />
 					<Route path='/books' component={Books} />
 				</Routes>
