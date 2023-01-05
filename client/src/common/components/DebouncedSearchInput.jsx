@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Input } from 'reactstrap';
+import { Input } from 'antd';
 import { debounce } from 'lodash';
 
 const DebouncedSearchInput = (props) => {
