@@ -5,8 +5,7 @@ import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
 const Field = Form.Item;
 
 const Create = () => {
-  const [author, setAuthor] = useState();
-
+  // const [author, setAuthor] = useState();
   const [redirect, setRedirect] = useState(false);
 
   const initialValues = {
@@ -16,45 +15,32 @@ const Create = () => {
     birthdate: ''
   };
 
-  const handleInputChange = (event, { name, value }) => {
-    setAuthor((previousValue) => ({ ...previousValue, [name]: value }));
-  };
+  // const handleInputChange = (event, { name, value }) => {
+  //   setAuthor((previousValue) => ({ ...previousValue, [name]: value }));
+  // };
 
-  const handleFormSubmission = () => {
-    axios
-      .post('/api/authors', author)
-      .then(() => {
-        setRedirect(true);
-      })
-      .catch(() => {
-        alert('An Error Occured');
-      });
-  };
+  // const handleFormCancellation = () => {
+  //   setRedirect(true);
+  // };
 
-  const handleFormCancellation = () => {
-    setRedirect(true);
-  };
-
-  const handleFormReset = () => {
-    setAuthor({
-      givenName: '',
-      lastName: '',
-      country: '',
-      birthdate: ''
-    });
-  };
+  // const handleFormReset = () => {
+  //   setAuthor({
+  //     givenName: '',
+  //     lastName: '',
+  //     country: '',
+  //     birthdate: ''
+  //   });
+  // };
 
   const onFinish = (values) => {
     const payload = { ...values, birthdate: values?.birthdate?.$d };
     console.log(payload);
-    axios
-      .post('/api/authors', payload)
-      .then(() => {
-        setRedirect(true);
-      })
-      .catch(() => {
-        alert('An Error Occured');
-      });
+    try {
+      axios.post('/api/authors', payload);
+      setRedirect(true);
+    } catch (error) {
+      alert('An Error Occured');
+    }
   };
 
   return (
