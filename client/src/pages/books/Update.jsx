@@ -57,16 +57,16 @@ const Update = ({ match }) => {
         <Navigate to="/books" push />
       ) : (
         <>
-          <Header as="h2">Editar</Header>
+          <Header as="h2">Edit</Header>
           <Form widths="equal">
             <Form.Group>
-              <Form.Input label="Título" name="title" value={book.title} onChange={handleInputChange} />
-              <Form.Select label="Autor" name="author" options={authors} value={book.author} onChange={handleInputChange} />
+              <Form.Input label="Title" name="title" value={book.title} onChange={handleInputChange} />
+              <Form.Select label="Author" name="author" options={authors} value={book.author} onChange={handleInputChange} />
             </Form.Group>
             <Form.Group>
-              <Form.Input label="Género" name="genre" value={book.genre} onChange={handleInputChange} />
+              <Form.Input label="Genre" name="genre" value={book.genre} onChange={handleInputChange} />
               <DateInput
-                label="Fecha de Publicación"
+                label="Publication Date"
                 startMode="year"
                 popupPosition="bottom center"
                 name="publicationDate"

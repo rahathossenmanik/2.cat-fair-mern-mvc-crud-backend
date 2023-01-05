@@ -51,13 +51,13 @@ const Create = () => {
           <Header as="h2">Crear</Header>
           <Form widths="equal">
             <Form.Group>
-              <Form.Input label="Nombre" name="givenName" value={author.givenName} onChange={handleInputChange} />
+              <Form.Input label="Name" name="givenName" value={author.givenName} onChange={handleInputChange} />
               <Form.Input label="Apellido" name="lastName" value={author.lastName} onChange={handleInputChange} />
             </Form.Group>
             <Form.Group>
-              <Form.Input label="País" name="country" value={author.country} onChange={handleInputChange} />
+              <Form.Input label="Country" name="country" value={author.country} onChange={handleInputChange} />
               <DateInput
-                label="Fecha de Nacimiento"
+                label="Date of Birth"
                 startMode="year"
                 popupPosition="bottom center"
                 name="birthdate"
