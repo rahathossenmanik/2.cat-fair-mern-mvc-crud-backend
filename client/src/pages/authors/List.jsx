@@ -1,18 +1,62 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Header, Grid, Table } from 'semantic-ui-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import TableSet from './../../common/components/TableSet';
 
 const List = ({ match }) => {
+  const navigate = useNavigate();
+
   const [authors, setAuthors] = useState([]);
+  const [totalRows, setTotalRows] = useState(0);
+  const [pageNo, setPageNo] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [query, setQuery] = useState('');
+
   const loadAuthors = () => {
     axios.get('/api/authors/').then((response) => {
       setAuthors(response.data);
     });
   };
+
+  const columns = [
+    {
+      title: 'Name',
+      render: (row) => `${row?.givenName} ${row?.lastName}`
+    },
+    {
+      title: 'Country',
+      render: (row) => row?.country
+    },
+    {
+      title: 'Date of Birth',
+      render: (row) => (row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate)
+    },
+    {
+      title: 'Action',
+      align: 'center',
+      render: (row) => {
+        return (
+          <>
+            <Button type="primary" className="me-1" ghost as={Link} onClick={() => navigate(`/update/${row?._id}`)}>
+              Edit
+            </Button>
+            <Button type="primary" danger ghost onClick={() => deleteAuthor(row?._id)}>
+              Delete
+            </Button>
+          </>
+        );
+      }
+    }
+  ];
+
   useEffect(() => {
     loadAuthors();
   }, []);
+
+  const onCreate = () => {
+    navigate('/authors/create');
+  };
 
   const deleteAuthor = (_id) => {
     axios.delete(`/api/authors/${_id}`).then(() => {
@@ -22,47 +66,19 @@ const List = ({ match }) => {
 
   return (
     <>
-      <Grid>
-        <Grid.Column width={8} textAlign="left">
-          <Header as="h2">List</Header>
-        </Grid.Column>
-        <Grid.Column width={8} textAlign="right">
-          <Button color="green" as={Link} to={`${match?.url}/create`}>
-            New
-          </Button>
-        </Grid.Column>
-      </Grid>
-      <Table singleLine columns={4} striped>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Country</Table.HeaderCell>
-            <Table.HeaderCell>Date of Birth</Table.HeaderCell>
-            <Table.HeaderCell />
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {authors.map((author) => {
-            const { _id, givenName, lastName, country, birthdate } = author;
-            return (
-              <Table.Row key={_id}>
-                <Table.Cell>{`${givenName} ${lastName}`}</Table.Cell>
-                <Table.Cell>{country}</Table.Cell>
-                <Table.Cell>{birthdate ? birthdate.slice(0, 10) : birthdate}</Table.Cell>
-                <Table.Cell textAlign="center">
-                  <Button basic color="blue" as={Link} to={`${match?.url}/update${_id}`}>
-                    Edit
-                  </Button>
-                  <Button basic color="red" onClick={() => deleteAuthor(_id)}>
-                    Delete
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+      <TableSet
+        columns={columns}
+        data={authors}
+        title="Authors"
+        totalRows={totalRows}
+        pageSize={perPage}
+        setPageSize={setPerPage}
+        pageNo={pageNo}
+        setPageNo={setPageNo}
+        setQuery={setQuery}
+        queryPlaceholder="Search Authors"
+        onCreate={onCreate}
+      />
     </>
   );
 };

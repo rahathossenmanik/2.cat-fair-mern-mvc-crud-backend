@@ -53,10 +53,10 @@ const List = ({ match }) => {
                 <Table.Cell>{genre}</Table.Cell>
                 <Table.Cell>{publicationDate ? publicationDate.slice(0, 10) : publicationDate}</Table.Cell>
                 <Table.Cell textAlign="center">
-                  <Button basic color="blue" as={Link} to={`${match.url}/update${_id}`}>
+                  <Button color="blue" as={Link} to={`${match.url}/update${_id}`}>
                     Edit
                   </Button>
-                  <Button basic color="red" onClick={() => deleteBook(_id)}>
+                  <Button color="red" onClick={() => deleteBook(_id)}>
                     Delete
                   </Button>
                 </Table.Cell>
