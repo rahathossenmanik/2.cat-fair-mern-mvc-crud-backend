@@ -1,18 +1,61 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Header, Grid, Table } from 'semantic-ui-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import TableSet from '../../common/components/TableSet';
 
 const List = ({ match }) => {
+  const navigate = useNavigate();
+
   const [books, setBooks] = useState([]);
+  const [totalRows, setTotalRows] = useState(0);
+  const [pageNo, setPageNo] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [query, setQuery] = useState('');
   const loadBooks = () => {
     axios.get('/api/books/').then((response) => {
       setBooks(response.data);
     });
   };
+
+  const columns = [
+    {
+      title: 'Name',
+      render: (row) => `${row?.givenName} ${row?.lastName}`
+    },
+    {
+      title: 'Country',
+      render: (row) => row?.country
+    },
+    {
+      title: 'Date of Birth',
+      render: (row) => (row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate)
+    },
+    {
+      title: 'Action',
+      align: 'center',
+      render: (row) => {
+        return (
+          <>
+            <Button type="primary" className="me-1" ghost as={Link} onClick={() => navigate(`/update/${row?._id}`)}>
+              Edit
+            </Button>
+            <Button type="primary" danger ghost onClick={() => deleteBook(row?._id)}>
+              Delete
+            </Button>
+          </>
+        );
+      }
+    }
+  ];
+
   useEffect(() => {
     loadBooks();
   }, []);
+
+  const onCreate = () => {
+    navigate('/books/create');
+  };
 
   const deleteBook = (_id) => {
     axios.delete(`/api/books/${_id}`).then(() => {
@@ -22,49 +65,19 @@ const List = ({ match }) => {
 
   return (
     <>
-      <Grid>
-        <Grid.Column width={8} textAlign="left">
-          <Header as="h2">List</Header>
-        </Grid.Column>
-        <Grid.Column width={8} textAlign="right">
-          <Button color="green" as={Link} to={`${match.url}/create`}>
-            New
-          </Button>
-        </Grid.Column>
-      </Grid>
-      <Table singleLine columns={4} striped>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Title</Table.HeaderCell>
-            <Table.HeaderCell>Author</Table.HeaderCell>
-            <Table.HeaderCell>Genre</Table.HeaderCell>
-            <Table.HeaderCell>Publication Date</Table.HeaderCell>
-            <Table.HeaderCell />
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {books.map((book) => {
-            const { _id, title, author, genre, publicationDate } = book;
-            return (
-              <Table.Row key={_id}>
-                <Table.Cell>{title}</Table.Cell>
-                <Table.Cell>{author ? `${author.givenName} ${author.lastName}` : ''}</Table.Cell>
-                <Table.Cell>{genre}</Table.Cell>
-                <Table.Cell>{publicationDate ? publicationDate.slice(0, 10) : publicationDate}</Table.Cell>
-                <Table.Cell textAlign="center">
-                  <Button color="blue" as={Link} to={`${match.url}/update${_id}`}>
-                    Edit
-                  </Button>
-                  <Button color="red" onClick={() => deleteBook(_id)}>
-                    Delete
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+      <TableSet
+        columns={columns}
+        data={books}
+        title="Books"
+        totalRows={totalRows}
+        pageSize={perPage}
+        setPageSize={setPerPage}
+        pageNo={pageNo}
+        setPageNo={setPageNo}
+        setQuery={setQuery}
+        queryPlaceholder="Search Books"
+        onCreate={onCreate}
+      />
     </>
   );
 };
