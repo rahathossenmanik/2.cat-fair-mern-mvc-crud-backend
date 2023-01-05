@@ -1,18 +1,20 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Button, Form, Grid, Header } from 'semantic-ui-react';
-import { DateInput } from 'semantic-ui-calendar-react';
+import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
+const Field = Form.Item;
 
 const Create = () => {
-  const [author, setAuthor] = useState({
+  const [author, setAuthor] = useState();
+
+  const [redirect, setRedirect] = useState(false);
+
+  const initialValues = {
     givenName: '',
     lastName: '',
     country: '',
     birthdate: ''
-  });
-
-  const [redirect, setRedirect] = useState(false);
+  };
 
   const handleInputChange = (event, { name, value }) => {
     setAuthor((previousValue) => ({ ...previousValue, [name]: value }));
@@ -42,44 +44,67 @@ const Create = () => {
     });
   };
 
+  const onFinish = (values) => {
+    const payload = { ...values, birthdate: values?.birthdate?.$d };
+    console.log(payload);
+    axios
+      .post('/api/authors', payload)
+      .then(() => {
+        setRedirect(true);
+      })
+      .catch(() => {
+        alert('An Error Occured');
+      });
+  };
+
   return (
     <>
       {redirect ? (
         <Navigate to="/authors" push />
       ) : (
         <>
-          <Header as="h2">Crear</Header>
-          <Form widths="equal">
-            <Form.Group>
-              <Form.Input label="Name" name="givenName" value={author.givenName} onChange={handleInputChange} />
-              <Form.Input label="Apellido" name="lastName" value={author.lastName} onChange={handleInputChange} />
-            </Form.Group>
-            <Form.Group>
-              <Form.Input label="Country" name="country" value={author.country} onChange={handleInputChange} />
-              <DateInput
-                label="Date of Birth"
-                startMode="year"
-                popupPosition="bottom center"
-                name="birthdate"
-                preserveViewMode={false}
-                animation="none"
-                closable
-                icon={false}
-                dateFormat="YYYY-MM-DD"
-                value={author.birthdate}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
+          <Form initialValues={initialValues} onFinish={onFinish} autoComplete="off" layout="vertical">
+            <Row>
+              <Col lg="8" md="12" className="p-2">
+                <Field
+                  label="First Name"
+                  name="givenName"
+                  rules={[{ required: true, message: 'Please input your first name!' }]}>
+                  <Input />
+                </Field>
+              </Col>
+
+              <Col lg="8" md="12" className="p-2">
+                <Field
+                  label="Last Name"
+                  name="lastName"
+                  rules={[{ required: true, message: 'Please input your last name!' }]}>
+                  <Input />
+                </Field>
+              </Col>
+
+              <Col lg="8" md="12" className="p-2">
+                <Field label="Country" name="country">
+                  <Input />
+                </Field>
+              </Col>
+
+              <Col lg="8" md="12" className="p-2">
+                <Field label="Date of Birth" name="birthdate">
+                  <DatePicker />
+                </Field>
+              </Col>
+            </Row>
+
+            <Row className="p-2">
+              <Button type="primary" htmlType="submit" className="me-2">
+                Submit
+              </Button>
+              <Button type="primary" ghost htmlType="button" onClick={() => {}}>
+                Reset
+              </Button>
+            </Row>
           </Form>
-          <Grid stackable>
-            <Grid.Column width={8} textAlign="left">
-              <Button color="teal" content="Reiniciar" onClick={handleFormReset} />
-            </Grid.Column>
-            <Grid.Column width={8} textAlign="right">
-              <Button color="red" content="Cancelar" onClick={handleFormCancellation} />
-              <Button color="green" content="Guardar" onClick={handleFormSubmission} />
-            </Grid.Column>
-          </Grid>
         </>
       )}
     </>
