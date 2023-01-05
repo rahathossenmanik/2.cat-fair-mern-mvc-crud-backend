@@ -20,16 +20,20 @@ const List = ({ match }) => {
 
   const columns = [
     {
-      title: 'Name',
-      render: (row) => `${row?.givenName} ${row?.lastName}`
+      title: 'Title',
+      render: (row) => row?.title
     },
     {
-      title: 'Country',
-      render: (row) => row?.country
+      title: 'Author',
+      render: (row) => `${row?.author?.givenName} ${row?.author?.lastName}`
     },
     {
-      title: 'Date of Birth',
-      render: (row) => (row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate)
+      title: 'Genre',
+      render: (row) => row?.genre
+    },
+    {
+      title: 'Publication Date',
+      render: (row) => (row?.publicationDate ? row?.publicationDate.slice(0, 10) : row?.publicationDate)
     },
     {
       title: 'Action',
