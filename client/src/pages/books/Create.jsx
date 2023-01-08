@@ -7,6 +7,7 @@ const Field = Form.Item;
 const Create = () => {
   // const [book, setBook] = useState();
   const [authors, setAuthors] = useState([]);
+  const [author, setAuthor] = useState();
 
   const initialValues = {
     title: '',
@@ -46,7 +47,7 @@ const Create = () => {
   // };
 
   const onFinish = (values) => {
-    const payload = { ...values, publicationDate: values?.publicationDate?.$d };
+    const payload = { ...values, author: author, publicationDate: values?.publicationDate?.$d };
     console.log(payload);
     try {
       axios.post('/api/books', payload);
@@ -63,28 +64,36 @@ const Create = () => {
       ) : (
         <>
           <Form initialValues={initialValues} onFinish={onFinish} autoComplete="off" layout="vertical">
-            <Row>
-              <Col lg="8" md="12" className="p-2">
+            <Row gutter={[8, 0]} className="mt-3">
+              <Col lg={8} md={12}>
                 <Field label="Title" name="title" rules={[{ required: true, message: 'Title is required!' }]}>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
-                <Field label="Author" name="author" rules={[{ required: true, message: 'Author is required!' }]}>
-                  <Select options={authors} />
+              <Col lg={8} md={12}>
+                <Field label="Author" rules={[{ required: true, message: 'Author is required!' }]}>
+                  <Select
+                    showSearch
+                    placeholder="Select author"
+                    optionFilterProp="children"
+                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    value={author}
+                    onChange={(value) => setAuthor(value)}
+                    options={authors}
+                  />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
+              <Col lg={8} md={12}>
                 <Field label="Genre" name="genre">
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
-                <Field label="Publication Date" name="publicationDate">
-                  <DatePicker />
+              <Col lg={8} md={12}>
+                <Field label="Publication Date" name="publicationDate" className="w-100">
+                  <DatePicker className="w-100" />
                 </Field>
               </Col>
             </Row>
