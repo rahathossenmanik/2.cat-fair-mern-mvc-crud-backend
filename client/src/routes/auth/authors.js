@@ -6,6 +6,6 @@ import AuthorEntry from '../../pages/authors/form/AuthorEntry';
 export const authors = [
   { path: '/', element: <Home /> },
   { path: '/authors', element: <AuthorList /> },
-  { path: '/authors/create', element: <AuthorEntry /> },
+  { path: '/authors/entry', element: <AuthorEntry /> },
   { path: '/authors/update', element: <Update /> },
 ];

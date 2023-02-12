@@ -6,6 +6,6 @@ import BookEntry from '../../pages/books/form/BookEntry';
 export const books = [
   { path: '/', element: <Home /> },
   { path: '/books', element: <BookList /> },
-  { path: '/books/create', element: <BookEntry /> },
+  { path: '/books/entry', element: <BookEntry /> },
   { path: '/books/update', element: <Update /> },
 ];
