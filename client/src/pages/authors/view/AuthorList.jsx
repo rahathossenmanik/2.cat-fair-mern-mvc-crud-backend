@@ -44,7 +44,9 @@ const AuthorList = ({ match }) => {
               className='me-1'
               ghost
               as={Link}
-              onClick={() => navigate(`/update/${row?._id}`)}>
+              onClick={() =>
+                navigate('/authors/entry', { state: { author: row } })
+              }>
               Edit
             </Button>
             <Button

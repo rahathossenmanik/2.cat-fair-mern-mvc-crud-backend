@@ -1,25 +1,34 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import dayjs from 'dayjs';
 import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
 const Field = Form.Item;
 
 const AuthorEntry = () => {
-  // const [author, setAuthor] = useState();
+  const {
+    state: { author },
+  } = useLocation();
+  const authorId = author?._id;
   const [redirect, setRedirect] = useState(false);
 
   const initialValues = {
-    givenName: '',
-    lastName: '',
-    country: '',
-    birthdate: '',
+    givenName: author?.givenName || '',
+    lastName: author?.lastName || '',
+    country: author?.country || '',
+    birthdate: dayjs(author?.birthdate) || '',
   };
 
   const onFinish = (values) => {
     const payload = { ...values, birthdate: values?.birthdate?.$d };
     console.log(payload);
     try {
-      axios.post('/api/authors', payload);
+      authorId
+        ? axios.put(`/api/authors/${authorId}`, {
+            ...payload,
+            _id: authorId,
+          })
+        : axios.post('/api/authors', payload);
       setRedirect(true);
     } catch (error) {
       alert('An Error Occured');
@@ -79,9 +88,6 @@ const AuthorEntry = () => {
             <Row className='p-2'>
               <Button type='primary' htmlType='submit' className='me-2'>
                 Submit
-              </Button>
-              <Button type='primary' ghost htmlType='button' onClick={() => {}}>
-                Reset
               </Button>
             </Row>
           </Form>
