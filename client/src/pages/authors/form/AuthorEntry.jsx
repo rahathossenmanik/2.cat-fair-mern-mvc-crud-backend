@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
 const Field = Form.Item;
 
-const Create = () => {
+const AuthorEntry = () => {
   // const [author, setAuthor] = useState();
   const [redirect, setRedirect] = useState(false);
 
@@ -91,4 +91,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default AuthorEntry;

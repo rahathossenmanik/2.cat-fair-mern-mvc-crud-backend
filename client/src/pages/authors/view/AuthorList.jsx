@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import TableSet from './../../common/components/TableSet';
+import TableSet from '../../../common/components/TableSet';
 
-const List = ({ match }) => {
+const AuthorList = ({ match }) => {
   const navigate = useNavigate();
 
   const [authors, setAuthors] = useState([]);
@@ -22,15 +22,16 @@ const List = ({ match }) => {
   const columns = [
     {
       title: 'Name',
-      render: (row) => `${row?.givenName} ${row?.lastName}`
+      render: (row) => `${row?.givenName} ${row?.lastName}`,
     },
     {
       title: 'Country',
-      render: (row) => row?.country
+      render: (row) => row?.country,
     },
     {
       title: 'Date of Birth',
-      render: (row) => (row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate)
+      render: (row) =>
+        row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate,
     },
     {
       title: 'Action',
@@ -38,16 +39,25 @@ const List = ({ match }) => {
       render: (row) => {
         return (
           <>
-            <Button type="primary" className="me-1" ghost as={Link} onClick={() => navigate(`/update/${row?._id}`)}>
+            <Button
+              type='primary'
+              className='me-1'
+              ghost
+              as={Link}
+              onClick={() => navigate(`/update/${row?._id}`)}>
               Edit
             </Button>
-            <Button type="primary" danger ghost onClick={() => deleteAuthor(row?._id)}>
+            <Button
+              type='primary'
+              danger
+              ghost
+              onClick={() => deleteAuthor(row?._id)}>
               Delete
             </Button>
           </>
         );
-      }
-    }
+      },
+    },
   ];
 
   useEffect(() => {
@@ -69,18 +79,18 @@ const List = ({ match }) => {
       <TableSet
         columns={columns}
         data={authors}
-        title="Authors"
+        title='Authors'
         totalRows={totalRows}
         pageSize={perPage}
         setPageSize={setPerPage}
         pageNo={pageNo}
         setPageNo={setPageNo}
         setQuery={setQuery}
-        queryPlaceholder="Search Authors"
+        queryPlaceholder='Search Authors'
         onCreate={onCreate}
       />
     </>
   );
 };
 
-export default List;
+export default AuthorList;
