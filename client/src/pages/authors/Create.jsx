@@ -12,25 +12,8 @@ const Create = () => {
     givenName: '',
     lastName: '',
     country: '',
-    birthdate: ''
+    birthdate: '',
   };
-
-  // const handleInputChange = (event, { name, value }) => {
-  //   setAuthor((previousValue) => ({ ...previousValue, [name]: value }));
-  // };
-
-  // const handleFormCancellation = () => {
-  //   setRedirect(true);
-  // };
-
-  // const handleFormReset = () => {
-  //   setAuthor({
-  //     givenName: '',
-  //     lastName: '',
-  //     country: '',
-  //     birthdate: ''
-  //   });
-  // };
 
   const onFinish = (values) => {
     const payload = { ...values, birthdate: values?.birthdate?.$d };
@@ -46,47 +29,58 @@ const Create = () => {
   return (
     <>
       {redirect ? (
-        <Navigate to="/authors" push />
+        <Navigate to='/authors' push />
       ) : (
         <>
-          <Form initialValues={initialValues} onFinish={onFinish} autoComplete="off" layout="vertical">
+          <Form
+            initialValues={initialValues}
+            onFinish={onFinish}
+            autoComplete='off'
+            layout='vertical'>
             <Row>
-              <Col lg="8" md="12" className="p-2">
+              <Col lg='8' md='12' className='p-2'>
                 <Field
-                  label="First Name"
-                  name="givenName"
-                  rules={[{ required: true, message: 'Please input your first name!' }]}>
+                  label='First Name'
+                  name='givenName'
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your first name!',
+                    },
+                  ]}>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
+              <Col lg='8' md='12' className='p-2'>
                 <Field
-                  label="Last Name"
-                  name="lastName"
-                  rules={[{ required: true, message: 'Please input your last name!' }]}>
+                  label='Last Name'
+                  name='lastName'
+                  rules={[
+                    { required: true, message: 'Please input your last name!' },
+                  ]}>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
-                <Field label="Country" name="country">
+              <Col lg='8' md='12' className='p-2'>
+                <Field label='Country' name='country'>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg="8" md="12" className="p-2">
-                <Field label="Date of Birth" name="birthdate">
+              <Col lg='8' md='12' className='p-2'>
+                <Field label='Date of Birth' name='birthdate'>
                   <DatePicker />
                 </Field>
               </Col>
             </Row>
 
-            <Row className="p-2">
-              <Button type="primary" htmlType="submit" className="me-2">
+            <Row className='p-2'>
+              <Button type='primary' htmlType='submit' className='me-2'>
                 Submit
               </Button>
-              <Button type="primary" ghost htmlType="button" onClick={() => {}}>
+              <Button type='primary' ghost htmlType='button' onClick={() => {}}>
                 Reset
               </Button>
             </Row>

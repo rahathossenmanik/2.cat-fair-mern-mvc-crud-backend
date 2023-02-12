@@ -13,7 +13,7 @@ const Create = () => {
     title: '',
     author: '',
     genre: '',
-    publicationDate: ''
+    publicationDate: '',
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Create = () => {
       setAuthors(
         response.data.map((author) => ({
           label: `${author.givenName} ${author.lastName}`,
-          value: author._id
+          value: author._id,
         }))
       );
     });
@@ -29,25 +29,12 @@ const Create = () => {
 
   const [redirect, setRedirect] = useState(false);
 
-  // const handleInputChange = (event, { name, value }) => {
-  //   setBook((previousValue) => ({ ...previousValue, [name]: value }));
-  // };
-
-  // const handleFormCancellation = () => {
-  //   setRedirect(true);
-  // };
-
-  // const handleFormReset = () => {
-  //   setBook({
-  //     title: '',
-  //     author: '',
-  //     genre: '',
-  //     publicationDate: ''
-  //   });
-  // };
-
   const onFinish = (values) => {
-    const payload = { ...values, author: author, publicationDate: values?.publicationDate?.$d };
+    const payload = {
+      ...values,
+      author: author,
+      publicationDate: values?.publicationDate?.$d,
+    };
     console.log(payload);
     try {
       axios.post('/api/books', payload);
@@ -60,24 +47,37 @@ const Create = () => {
   return (
     <>
       {redirect ? (
-        <Navigate to="/books" push />
+        <Navigate to='/books' push />
       ) : (
         <>
-          <Form initialValues={initialValues} onFinish={onFinish} autoComplete="off" layout="vertical">
-            <Row gutter={[8, 0]} className="mt-3">
+          <Form
+            initialValues={initialValues}
+            onFinish={onFinish}
+            autoComplete='off'
+            layout='vertical'>
+            <Row gutter={[8, 0]} className='mt-3'>
               <Col lg={8} md={12}>
-                <Field label="Title" name="title" rules={[{ required: true, message: 'Title is required!' }]}>
+                <Field
+                  label='Title'
+                  name='title'
+                  rules={[{ required: true, message: 'Title is required!' }]}>
                   <Input />
                 </Field>
               </Col>
 
               <Col lg={8} md={12}>
-                <Field label="Author" rules={[{ required: true, message: 'Author is required!' }]}>
+                <Field
+                  label='Author'
+                  rules={[{ required: true, message: 'Author is required!' }]}>
                   <Select
                     showSearch
-                    placeholder="Select author"
-                    optionFilterProp="children"
-                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    placeholder='Select author'
+                    optionFilterProp='children'
+                    filterOption={(input, option) =>
+                      (option?.label ?? '')
+                        .toLowerCase()
+                        .includes(input.toLowerCase())
+                    }
                     value={author}
                     onChange={(value) => setAuthor(value)}
                     options={authors}
@@ -86,23 +86,26 @@ const Create = () => {
               </Col>
 
               <Col lg={8} md={12}>
-                <Field label="Genre" name="genre">
+                <Field label='Genre' name='genre'>
                   <Input />
                 </Field>
               </Col>
 
               <Col lg={8} md={12}>
-                <Field label="Publication Date" name="publicationDate" className="w-100">
-                  <DatePicker className="w-100" />
+                <Field
+                  label='Publication Date'
+                  name='publicationDate'
+                  className='w-100'>
+                  <DatePicker className='w-100' />
                 </Field>
               </Col>
             </Row>
 
-            <Row className="p-2">
-              <Button type="primary" htmlType="submit" className="me-2">
+            <Row className='p-2'>
+              <Button type='primary' htmlType='submit' className='me-2'>
                 Submit
               </Button>
-              <Button type="primary" ghost htmlType="button" onClick={() => {}}>
+              <Button type='primary' ghost htmlType='button' onClick={() => {}}>
                 Reset
               </Button>
             </Row>
