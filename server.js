@@ -1,11 +1,12 @@
+require('dotenv').config({ path: '.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 
 const authors = require('./routes/authors');
 const books = require('./routes/books');
 
-const port = 5000;
-const mongo_uri = 'mongodb://localhost:27017/mern-mvc-crud';
+const port = process.env.PORT;
+const mongo_uri = process.env.DATABASE_URL;
 const app = express();
 
 try {
