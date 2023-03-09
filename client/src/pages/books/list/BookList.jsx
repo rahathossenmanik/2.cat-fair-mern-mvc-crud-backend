@@ -21,22 +21,19 @@ const BookList = ({ match }) => {
   const columns = [
     {
       title: 'Title',
-      render: (row) => row?.title,
+      render: (row) => row?.title
     },
     {
       title: 'Author',
-      render: (row) => `${row?.author?.givenName} ${row?.author?.lastName}`,
+      render: (row) => `${row?.author?.givenName} ${row?.author?.lastName}`
     },
     {
       title: 'Genre',
-      render: (row) => row?.genre,
+      render: (row) => row?.genre
     },
     {
       title: 'Publication Date',
-      render: (row) =>
-        row?.publicationDate
-          ? row?.publicationDate.slice(0, 10)
-          : row?.publicationDate,
+      render: (row) => (row?.publicationDate ? row?.publicationDate.slice(0, 10) : row?.publicationDate)
     },
     {
       title: 'Action',
@@ -45,24 +42,20 @@ const BookList = ({ match }) => {
         return (
           <>
             <Button
-              type='primary'
-              className='me-1'
+              type="primary"
+              className="me-1"
               ghost
               as={Link}
-              onClick={() => navigate(`/update/${row?._id}`)}>
+              onClick={() => navigate('/books/entry', { state: { book: row } })}>
               Edit
             </Button>
-            <Button
-              type='primary'
-              danger
-              ghost
-              onClick={() => deleteBook(row?._id)}>
+            <Button type="primary" danger ghost onClick={() => deleteBook(row?._id)}>
               Delete
             </Button>
           </>
         );
-      },
-    },
+      }
+    }
   ];
 
   useEffect(() => {
@@ -70,7 +63,7 @@ const BookList = ({ match }) => {
   }, []);
 
   const onCreate = () => {
-    navigate('/books/create');
+    navigate('/books/entry', { state: { book: {} } });
   };
 
   const deleteBook = (_id) => {
@@ -84,14 +77,14 @@ const BookList = ({ match }) => {
       <TableSet
         columns={columns}
         data={books}
-        title='Books'
+        title="Books"
         totalRows={totalRows}
         pageSize={perPage}
         setPageSize={setPerPage}
         pageNo={pageNo}
         setPageNo={setPageNo}
         setQuery={setQuery}
-        queryPlaceholder='Search Books'
+        queryPlaceholder="Search Books"
         onCreate={onCreate}
       />
     </>

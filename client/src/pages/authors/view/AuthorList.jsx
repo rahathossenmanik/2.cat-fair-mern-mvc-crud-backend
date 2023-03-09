@@ -22,16 +22,15 @@ const AuthorList = ({ match }) => {
   const columns = [
     {
       title: 'Name',
-      render: (row) => `${row?.givenName} ${row?.lastName}`,
+      render: (row) => `${row?.givenName} ${row?.lastName}`
     },
     {
       title: 'Country',
-      render: (row) => row?.country,
+      render: (row) => row?.country
     },
     {
       title: 'Date of Birth',
-      render: (row) =>
-        row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate,
+      render: (row) => (row?.birthdate ? row?.birthdate.slice(0, 10) : row?.birthdate)
     },
     {
       title: 'Action',
@@ -40,26 +39,20 @@ const AuthorList = ({ match }) => {
         return (
           <>
             <Button
-              type='primary'
-              className='me-1'
+              type="primary"
+              className="me-1"
               ghost
               as={Link}
-              onClick={() =>
-                navigate('/authors/entry', { state: { author: row } })
-              }>
+              onClick={() => navigate('/authors/entry', { state: { author: row } })}>
               Edit
             </Button>
-            <Button
-              type='primary'
-              danger
-              ghost
-              onClick={() => deleteAuthor(row?._id)}>
+            <Button type="primary" danger ghost onClick={() => deleteAuthor(row?._id)}>
               Delete
             </Button>
           </>
         );
-      },
-    },
+      }
+    }
   ];
 
   useEffect(() => {
@@ -67,7 +60,7 @@ const AuthorList = ({ match }) => {
   }, []);
 
   const onCreate = () => {
-    navigate('/authors/create');
+    navigate('/authors/entry', { state: { author: {} } });
   };
 
   const deleteAuthor = (_id) => {
@@ -81,14 +74,14 @@ const AuthorList = ({ match }) => {
       <TableSet
         columns={columns}
         data={authors}
-        title='Authors'
+        title="Authors"
         totalRows={totalRows}
         pageSize={perPage}
         setPageSize={setPerPage}
         pageNo={pageNo}
         setPageNo={setPageNo}
         setQuery={setQuery}
-        queryPlaceholder='Search Authors'
+        queryPlaceholder="Search Authors"
         onCreate={onCreate}
       />
     </>
