@@ -1,4 +1,4 @@
-# mern-mvc
+# Simple MERN CRUD Project
 
 ## Local Deployment
 
