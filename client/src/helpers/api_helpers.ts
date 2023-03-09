@@ -5,7 +5,7 @@ import accessToken from './jwt-token-access/accessToken';
 const token = accessToken;
 
 //apply base url for axios
-const API_URL = process.env.REACT_APP_BASE_URL;
+const API_URL = process.env.REACT_APP_API_BASE;
 
 const axiosApi = axios.create({
   baseURL: API_URL
@@ -18,18 +18,18 @@ axiosApi.interceptors.response.use(
   (error) => Promise.reject(error)
 );
 
-export async function get(url:string, config = {}) {
+export async function get(url: string, config = {}) {
   return await axiosApi.get(url, { ...config }).then((response) => response.data);
 }
 
-export async function post(url:string, data:any, config = {}) {
+export async function post(url: string, data: any, config = {}) {
   return axiosApi.post(url, { ...data }, { ...config }).then((response) => response.data);
 }
 
-export async function put(url:string, data:any, config = {}) {
+export async function put(url: string, data: any, config = {}) {
   return axiosApi.put(url, { ...data }, { ...config }).then((response) => response.data);
 }
 
-export async function del(url:string, config = {}) {
+export async function del(url: string, config = {}) {
   return await axiosApi.delete(url, { ...config }).then((response) => response.data);
 }

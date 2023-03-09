@@ -7,7 +7,7 @@ const Field = Form.Item;
 
 const AuthorEntry = () => {
   const {
-    state: { author },
+    state: { author }
   } = useLocation();
   const authorId = author?._id;
   const [redirect, setRedirect] = useState(false);
@@ -16,7 +16,7 @@ const AuthorEntry = () => {
     givenName: author?.givenName || '',
     lastName: author?.lastName || '',
     country: author?.country || '',
-    birthdate: dayjs(author?.birthdate) || '',
+    birthdate: dayjs(author?.birthdate) || ''
   };
 
   const onFinish = (values) => {
@@ -24,11 +24,11 @@ const AuthorEntry = () => {
     console.log(payload);
     try {
       authorId
-        ? axios.put(`/api/authors/${authorId}`, {
+        ? axios.put(process.env.REACT_APP_API_BASE + `/api/authors/${authorId}`, {
             ...payload,
-            _id: authorId,
+            _id: authorId
           })
-        : axios.post('/api/authors', payload);
+        : axios.post(process.env.REACT_APP_API_BASE + '/api/authors', payload);
       setRedirect(true);
     } catch (error) {
       alert('An Error Occured');
@@ -38,55 +38,49 @@ const AuthorEntry = () => {
   return (
     <>
       {redirect ? (
-        <Navigate to='/authors' push />
+        <Navigate to="/authors" push />
       ) : (
         <>
-          <Form
-            initialValues={initialValues}
-            onFinish={onFinish}
-            autoComplete='off'
-            layout='vertical'>
+          <Form initialValues={initialValues} onFinish={onFinish} autoComplete="off" layout="vertical">
             <Row>
-              <Col lg='8' md='12' className='p-2'>
+              <Col lg="8" md="12" className="p-2">
                 <Field
-                  label='First Name'
-                  name='givenName'
+                  label="First Name"
+                  name="givenName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your first name!',
-                    },
+                      message: 'Please input your first name!'
+                    }
                   ]}>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg='8' md='12' className='p-2'>
+              <Col lg="8" md="12" className="p-2">
                 <Field
-                  label='Last Name'
-                  name='lastName'
-                  rules={[
-                    { required: true, message: 'Please input your last name!' },
-                  ]}>
+                  label="Last Name"
+                  name="lastName"
+                  rules={[{ required: true, message: 'Please input your last name!' }]}>
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg='8' md='12' className='p-2'>
-                <Field label='Country' name='country'>
+              <Col lg="8" md="12" className="p-2">
+                <Field label="Country" name="country">
                   <Input />
                 </Field>
               </Col>
 
-              <Col lg='8' md='12' className='p-2'>
-                <Field label='Date of Birth' name='birthdate'>
+              <Col lg="8" md="12" className="p-2">
+                <Field label="Date of Birth" name="birthdate">
                   <DatePicker />
                 </Field>
               </Col>
             </Row>
 
-            <Row className='p-2'>
-              <Button type='primary' htmlType='submit' className='me-2'>
+            <Row className="p-2">
+              <Button type="primary" htmlType="submit" className="me-2">
                 Submit
               </Button>
             </Row>

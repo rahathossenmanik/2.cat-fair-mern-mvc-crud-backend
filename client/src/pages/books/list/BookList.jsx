@@ -13,7 +13,7 @@ const BookList = ({ match }) => {
   const [perPage, setPerPage] = useState(10);
   const [query, setQuery] = useState('');
   const loadBooks = () => {
-    axios.get('/api/books/').then((response) => {
+    axios.get(process.env.REACT_APP_API_BASE + '/api/books/').then((response) => {
       setBooks(response.data);
     });
   };
@@ -67,7 +67,7 @@ const BookList = ({ match }) => {
   };
 
   const deleteBook = (_id) => {
-    axios.delete(`/api/books/${_id}`).then(() => {
+    axios.delete(process.env.REACT_APP_API_BASE + `/api/books/${_id}`).then(() => {
       loadBooks();
     });
   };

@@ -14,7 +14,7 @@ const AuthorList = ({ match }) => {
   const [query, setQuery] = useState('');
 
   const loadAuthors = () => {
-    axios.get('/api/authors/').then((response) => {
+    axios.get(process.env.REACT_APP_API_BASE + '/api/authors/').then((response) => {
       setAuthors(response.data);
     });
   };
@@ -64,7 +64,7 @@ const AuthorList = ({ match }) => {
   };
 
   const deleteAuthor = (_id) => {
-    axios.delete(`/api/authors/${_id}`).then(() => {
+    axios.delete(process.env.REACT_APP_API_BASE + `/api/authors/${_id}`).then(() => {
       loadAuthors();
     });
   };

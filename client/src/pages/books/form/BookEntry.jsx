@@ -21,7 +21,7 @@ const BookEntry = () => {
   };
 
   useEffect(() => {
-    axios.get('/api/authors/').then((response) => {
+    axios.get(process.env.REACT_APP_API_BASE + '/api/authors/').then((response) => {
       setAuthors(
         response.data.map((author) => ({
           label: `${author.givenName} ${author.lastName}`,
@@ -36,11 +36,11 @@ const BookEntry = () => {
     console.log(payload);
     try {
       bookId
-        ? axios.put(`/api/books/${bookId}`, {
+        ? axios.put(process.env.REACT_APP_API_BASE + `/api/books/${bookId}`, {
             ...payload,
             _id: bookId
           })
-        : axios.post('/api/books', payload);
+        : axios.post(process.env.REACT_APP_API_BASE + '/api/books', payload);
       setRedirect(true);
     } catch (error) {
       alert('An Error Occured');
