@@ -6,7 +6,7 @@ exports.list = async (req, res) => {
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
@@ -16,18 +16,23 @@ exports.details = async (req, res) => {
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
 exports.create = async (req, res) => {
   const newData = new Pet(req.body);
-  try {
-    const data = await newData.save();
-    res.status(200).send(data);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+  const error = newData.validateSync();
+  if (error) {
+    res.status(400).send({ message: error.message, error });
+  } else {
+    try {
+      const data = await newData.save();
+      res.status(200).send(data);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: 'Internal Server Error' });
+    }
   }
 };
 
@@ -37,7 +42,7 @@ exports.update = async (req, res) => {
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
@@ -47,6 +52,6 @@ exports.delete = async (req, res) => {
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
