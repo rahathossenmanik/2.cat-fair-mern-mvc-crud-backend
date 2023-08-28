@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./swagger.js');
 
 const petTypes = require('./routes/petTypeRoutes');
 const characters = require('./routes/characterRoutes');
@@ -15,7 +15,7 @@ const app = express();
 try {
   mongoose.connect(mongo_uri, {
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   });
   console.log(`Connected to Database: ${mongo_uri}`);
 } catch (error) {
