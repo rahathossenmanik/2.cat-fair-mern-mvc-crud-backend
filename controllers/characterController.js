@@ -1,52 +1,52 @@
-const Book = require('../models/Book');
+const CharacterSchema = require('../models/CharacterSchema');
 
 exports.list = async (req, res) => {
   try {
-    const data = await Book.find().populate('author');
+    const data = await CharacterSchema.find();
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occured' });
+    res.status(500).send({ message: 'An Error Occurred' });
   }
 };
 
 exports.details = async (req, res) => {
   try {
-    const data = await Book.findById(req.params._id);
+    const data = await CharacterSchema.findById(req.params.id);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occured' });
+    res.status(500).send({ message: 'An Error Occurred' });
   }
 };
 
 exports.create = async (req, res) => {
-  const newData = new Book(req.body);
+  const newData = new CharacterSchema(req.body);
   try {
     const data = await newData.save();
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occured' });
+    res.status(500).send({ message: 'An Error Occurred' });
   }
 };
 
 exports.update = async (req, res) => {
   try {
-    const data = await Book.findByIdAndUpdate(req.params._id, req.body);
+    const data = await CharacterSchema.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occured' });
+    res.status(500).send({ message: 'An Error Occurred' });
   }
 };
 
 exports.delete = async (req, res) => {
   try {
-    const data = await Book.findByIdAndRemove(req.params._id);
+    const data = await CharacterSchema.findByIdAndRemove(req.params.id);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occured' });
+    res.status(500).send({ message: 'An Error Occurred' });
   }
 };

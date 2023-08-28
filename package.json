@@ -1,7 +1,7 @@
 {
-  "name": "mern-mvc",
+  "name": "pett-fair",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node JS + Express + Mongoose + MongoDB",
   "private": true,
   "main": "server.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/ripzier/mern-mvc.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Manik Hosen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ripzier/mern-mvc/issues"
@@ -25,7 +25,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.5",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.1",

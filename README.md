@@ -11,18 +11,18 @@
 
 Simple Node JS + Express JS + Mongoose + MongoDB Project
 
-## Related Projects (Bookstore)
+## Related Projects (Pet Fair)
 
-[MERN-MVC-CRUD-Frontend](https://github.com/rahathossenmanik/mern-mvc-crud-frontend)
+[Pet Fair - MERN-MVC-CRUD-Frontend](https://github.com/rahathossenmanik/1.cat-fair-mern-mvc-crud-frontend)
 
-[MERN-MVC-CRUD-Backend](https://github.com/rahathossenmanik/mern-mvc-crud)
+[Pet Fair - MERN-MVC-CRUD-Backend](https://github.com/rahathossenmanik/2.cat-fair-mern-mvc-crud-backend)
 
-[MERN-GraphQL-Frontend](https://github.com/rahathossenmanik/graphql-react-query-request)
+[Pet Fair - MERN-GraphQL-Frontend](https://github.com/rahathossenmanik/3.cat-fair-graphql-react-query-request)
 
-[MERN-GraphQL-Backend](https://github.com/rahathossenmanik/mern-graphql-backend)
+[Pet Fair - MERN-GraphQL-Backend](https://github.com/rahathossenmanik/4.cat-fair-mern-graphql-backend)
 
-[GraphQL + REST API](https://github.com/rahathossenmanik/graphql-and-rest-api)
+[Pet Fair - GraphQL + REST API](https://github.com/rahathossenmanik/5.cat-fair-graphql-and-rest-api)
 
-[NEST-CRUD-Backend](https://github.com/rahathossenmanik/nest-crud)
+[Pet Fair - NEST-CRUD-Backend](https://github.com/rahathossenmanik/6.cat-fair-nest-mongo-crud)
 
-[NEST-TypeORM-Postgre](https://github.com/rahathossenmanik/nest-typeorm-postgre)
+[Pet Fair - NEST-TypeORM-Postgre](https://github.com/rahathossenmanik/7.cat-fair-nest-typeorm-postgre)
