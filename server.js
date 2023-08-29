@@ -3,6 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const cors = require('cors');
+
+const corsOption = {
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002']
+};
 
 const petTypes = require('./routes/petTypeRoutes');
 const characters = require('./routes/characterRoutes');
@@ -28,6 +33,7 @@ app.use('/petTypes', petTypes);
 app.use('/characters', characters);
 app.use('/pets', pets);
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(cors(corsOption));
 
 app.listen({ port }, () => {
   console.log(`Server is Running on: http://localhost:${port}`);
