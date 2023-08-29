@@ -28,12 +28,12 @@ try {
   process.exit();
 }
 
+app.use(cors(corsOption));
 app.use(express.json());
 app.use('/petTypes', petTypes);
 app.use('/characters', characters);
 app.use('/pets', pets);
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(cors(corsOption));
 
 app.listen({ port }, () => {
   console.log(`Server is Running on: http://localhost:${port}`);
