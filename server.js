@@ -6,7 +6,10 @@ const swaggerDocument = require('./swagger.js');
 const cors = require('cors');
 
 const corsOption = {
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002']
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
 
 const petTypes = require('./routes/petTypeRoutes');
