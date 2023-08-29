@@ -3,38 +3,38 @@ const petTypeRequestBody = {
   properties: {
     label: {
       type: 'string',
-      description: 'Pet Type',
-    },
+      description: 'Pet Type'
+    }
   },
   required: ['label'],
   example: {
-    label: 'Dog',
-  },
+    label: 'Dog'
+  }
 };
 const petTypeResponseBody = {
   type: 'object',
   properties: {
     _id: {
       type: 'string',
-      description: 'Pet Type Id',
+      description: 'Pet Type Id'
     },
     label: {
       type: 'string',
-      description: 'Pet Type',
+      description: 'Pet Type'
     },
     createDate: {
       type: 'string',
-      description: 'Created Date',
+      description: 'Created Date'
     },
     updateDate: {
       type: 'string',
-      description: 'Updated Date',
+      description: 'Updated Date'
     },
     __v: {
       type: 'number',
-      description: 'Version',
-    },
-  },
+      description: 'Version'
+    }
+  }
 };
 
 const characterRequestBody = {
@@ -42,38 +42,38 @@ const characterRequestBody = {
   properties: {
     label: {
       type: 'string',
-      description: 'Character',
-    },
+      description: 'Character'
+    }
   },
   required: ['label'],
   example: {
-    label: 'Cute',
-  },
+    label: 'Cute'
+  }
 };
 const characterResponseBody = {
   type: 'object',
   properties: {
     _id: {
       type: 'string',
-      description: 'Character Id',
+      description: 'Character Id'
     },
     label: {
       type: 'string',
-      description: 'Character',
+      description: 'Character'
     },
     createDate: {
       type: 'string',
-      description: 'Created Date',
+      description: 'Created Date'
     },
     updateDate: {
       type: 'string',
-      description: 'Updated Date',
+      description: 'Updated Date'
     },
     __v: {
       type: 'number',
-      description: 'Version',
-    },
-  },
+      description: 'Version'
+    }
+  }
 };
 
 const petRequestBody = {
@@ -81,32 +81,36 @@ const petRequestBody = {
   properties: {
     name: {
       type: 'string',
-      description: 'Pet Name',
+      description: 'Pet Name'
     },
     age: {
       type: 'number',
-      description: 'Pet Age',
+      description: 'Pet Age'
     },
     petType: {
       type: 'string',
-      description: 'Pet Type Id',
+      description: 'Pet Type Id'
     },
     character: {
       type: 'string',
-      description: 'Character Id',
+      description: 'Character Id'
     },
     about: {
       type: 'string',
-      description: 'About Pet',
+      description: 'About Pet'
     },
     favorite: {
       type: 'string',
-      description: 'Favorite',
+      description: 'Favorite'
+    },
+    image: {
+      type: 'string',
+      description: 'Image'
     },
     loveCount: {
       type: 'number',
-      description: 'Love Count',
-    },
+      description: 'Love Count'
+    }
   },
   required: ['name', 'age', 'petType', 'character', 'about', 'favorite'],
   example: {
@@ -116,57 +120,62 @@ const petRequestBody = {
     character: '5f9e1b3b9d9b1b1b1b1b1b1b',
     about: 'Tommy is a cute dog',
     favorite: 'Tommy loves to play with kids',
-    loveCount: 0,
-  },
+    image: 'https://images.dog.ceo/breeds/terrier-norwich/n02094258_1003.jpg',
+    loveCount: 0
+  }
 };
 const petResponseBody = {
   type: 'object',
   properties: {
     _id: {
       type: 'string',
-      description: 'Pet Id',
+      description: 'Pet Id'
     },
     name: {
       type: 'string',
-      description: 'Pet Name',
+      description: 'Pet Name'
     },
     age: {
       type: 'number',
-      description: 'Pet Age',
+      description: 'Pet Age'
     },
     petType: {
       type: 'string',
-      description: 'Pet Type Id',
+      description: 'Pet Type Id'
     },
     character: {
       type: 'string',
-      description: 'Character Id',
+      description: 'Character Id'
     },
     about: {
       type: 'string',
-      description: 'About Pet',
+      description: 'About Pet'
     },
     favorite: {
       type: 'string',
-      description: 'Favorite',
+      description: 'Favorite'
+    },
+    image: {
+      type: 'string',
+      description: 'Image'
     },
     loveCount: {
       type: 'number',
-      description: 'Love Count',
+      description: 'Love Count'
     },
     createDate: {
       type: 'string',
-      description: 'Created Date',
+      description: 'Created Date'
     },
     updateDate: {
       type: 'string',
-      description: 'Updated Date',
+      description: 'Updated Date'
     },
     __v: {
       type: 'number',
-      description: 'Version',
-    },
-  },
+      description: 'Version'
+    }
+  }
 };
 
 module.exports = {
@@ -176,7 +185,7 @@ module.exports = {
     title: 'Pet Fair',
     description: 'Node JS + Express + Mongoose + MongoDB',
     contact: { email: 'rahathossenmanik@gmail.com' },
-    license: { name: 'MIT', url: 'https://opensource.org/licenses/MIT' },
+    license: { name: 'MIT', url: 'https://opensource.org/licenses/MIT' }
   },
   paths: {
     '/petTypes/getall': {
@@ -188,13 +197,13 @@ module.exports = {
               'application/json': {
                 schema: {
                   type: 'array',
-                  items: petTypeResponseBody,
-                },
-              },
-            },
-          },
-        },
-      },
+                  items: petTypeResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
     },
     '/petTypes/{id}': {
       get: {
@@ -206,20 +215,20 @@ module.exports = {
             required: true,
             description: 'Pet Type Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petTypeResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/petTypes/create': {
       post: {
@@ -227,20 +236,20 @@ module.exports = {
         requestBody: {
           content: {
             'application/json': {
-              schema: petTypeRequestBody,
-            },
-          },
+              schema: petTypeRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petTypeResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/petTypes/update/{id}': {
       put: {
@@ -252,27 +261,27 @@ module.exports = {
             required: true,
             description: 'Pet Type Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         requestBody: {
           content: {
             'application/json': {
-              schema: petTypeRequestBody,
-            },
-          },
+              schema: petTypeRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petTypeResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/petTypes/delete/{id}': {
       delete: {
@@ -284,20 +293,20 @@ module.exports = {
             required: true,
             description: 'Pet Type Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petTypeResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/characters/getall': {
       get: {
@@ -308,13 +317,13 @@ module.exports = {
               'application/json': {
                 schema: {
                   type: 'array',
-                  items: characterResponseBody,
-                },
-              },
-            },
-          },
-        },
-      },
+                  items: characterResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
     },
     '/characters/{id}': {
       get: {
@@ -326,20 +335,20 @@ module.exports = {
             required: true,
             description: 'Character Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: characterResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: characterResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/characters/create': {
       post: {
@@ -347,20 +356,20 @@ module.exports = {
         requestBody: {
           content: {
             'application/json': {
-              schema: characterRequestBody,
-            },
-          },
+              schema: characterRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: characterResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: characterResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/characters/update/{id}': {
       put: {
@@ -372,27 +381,27 @@ module.exports = {
             required: true,
             description: 'Character Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         requestBody: {
           content: {
             'application/json': {
-              schema: characterRequestBody,
-            },
-          },
+              schema: characterRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: characterResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: characterResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/characters/delete/{id}': {
       delete: {
@@ -404,20 +413,20 @@ module.exports = {
             required: true,
             description: 'Character Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: characterResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: characterResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/pets/getall': {
       get: {
@@ -428,13 +437,13 @@ module.exports = {
               'application/json': {
                 schema: {
                   type: 'array',
-                  items: petResponseBody,
-                },
-              },
-            },
-          },
-        },
-      },
+                  items: petResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
     },
     '/pets/{id}': {
       get: {
@@ -446,20 +455,20 @@ module.exports = {
             required: true,
             description: 'Pet Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/pets/create': {
       post: {
@@ -467,20 +476,20 @@ module.exports = {
         requestBody: {
           content: {
             'application/json': {
-              schema: petRequestBody,
-            },
-          },
+              schema: petRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/pets/update/{id}': {
       put: {
@@ -492,27 +501,27 @@ module.exports = {
             required: true,
             description: 'Pet Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         requestBody: {
           content: {
             'application/json': {
-              schema: petRequestBody,
-            },
-          },
+              schema: petRequestBody
+            }
+          }
         },
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petResponseBody,
-              },
-            },
-          },
-        },
-      },
+                schema: petResponseBody
+              }
+            }
+          }
+        }
+      }
     },
     '/pets/delete/{id}': {
       delete: {
@@ -524,22 +533,22 @@ module.exports = {
             required: true,
             description: 'Pet Id',
             schema: {
-              type: 'string',
-            },
-          },
+              type: 'string'
+            }
+          }
         ],
         responses: {
           200: {
             content: {
               'application/json': {
-                schema: petResponseBody,
-              },
-            },
-          },
-        },
-      },
-    },
+                schema: petResponseBody
+              }
+            }
+          }
+        }
+      }
+    }
   },
   consumes: ['application/json'],
-  produces: ['application/json'],
+  produces: ['application/json']
 };

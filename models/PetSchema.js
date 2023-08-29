@@ -9,6 +9,7 @@ const petSchema = new mongoose.Schema(
     character: { type: ObjectId, ref: 'Character', required: true },
     about: { type: String, required: true },
     favorite: { type: String, required: true },
+    image: { type: String, required: true },
     loveCount: Number
   },
   { timestamps: { createdAt: 'createDate', updatedAt: 'updateDate' } }
