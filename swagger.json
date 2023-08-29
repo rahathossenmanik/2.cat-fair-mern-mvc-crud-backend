@@ -53,7 +53,19 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {}
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "description": "Pet Type"
+                  }
+                },
+                "required": ["label"],
+                "example": {
+                  "label": "Dog"
+                }
+              }
             }
           }
         },
@@ -61,7 +73,31 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "description": "Pet Type Id"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Pet Type"
+                    },
+                    "createDate": {
+                      "type": "string",
+                      "description": "Created Date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "description": "Updated Date"
+                    },
+                    "__v": {
+                      "type": "number",
+                      "description": "Version"
+                    }
+                  }
+                }
               }
             }
           }
@@ -78,14 +114,36 @@
             "required": true,
             "description": "Pet Type Id",
             "schema": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Pet Type"
+                }
+              },
+              "required": ["label"],
+              "example": {
+                "label": "Dog"
+              }
             }
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {}
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "description": "Pet Type"
+                  }
+                },
+                "required": ["label"],
+                "example": {
+                  "label": "Dog"
+                }
+              }
             }
           }
         },
@@ -93,7 +151,31 @@
           "200": {
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "description": "Pet Type Id"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Pet Type"
+                    },
+                    "createDate": {
+                      "type": "string",
+                      "description": "Created Date"
+                    },
+                    "updateDate": {
+                      "type": "string",
+                      "description": "Updated Date"
+                    },
+                    "__v": {
+                      "type": "number",
+                      "description": "Version"
+                    }
+                  }
+                }
               }
             }
           }

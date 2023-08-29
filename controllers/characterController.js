@@ -1,52 +1,57 @@
-const CharacterSchema = require('../models/CharacterSchema');
+const Character = require('../models/CharacterSchema');
 
 exports.list = async (req, res) => {
   try {
-    const data = await CharacterSchema.find();
+    const data = await Character.find();
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
 exports.details = async (req, res) => {
   try {
-    const data = await CharacterSchema.findById(req.params.id);
+    const data = await Character.findById(req.params.id);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
 exports.create = async (req, res) => {
-  const newData = new CharacterSchema(req.body);
-  try {
-    const data = await newData.save();
-    res.status(200).send(data);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+  const newData = new Character(req.body);
+  const error = newData.validateSync();
+  if (error) {
+    res.status(400).send({ message: error.message, error });
+  } else {
+    try {
+      const data = await newData.save();
+      res.status(200).send(data);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: 'Internal Server Error' });
+    }
   }
 };
 
 exports.update = async (req, res) => {
   try {
-    const data = await CharacterSchema.findByIdAndUpdate(req.params.id, req.body);
+    const data = await Character.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 
 exports.delete = async (req, res) => {
   try {
-    const data = await CharacterSchema.findByIdAndRemove(req.params.id);
+    const data = await Character.findByIdAndRemove(req.params.id);
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
-    res.status(500).send({ message: 'An Error Occurred' });
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };
