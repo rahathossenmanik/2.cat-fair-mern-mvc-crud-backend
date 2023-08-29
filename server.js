@@ -6,7 +6,7 @@ const swaggerDocument = require('./swagger.js');
 const cors = require('cors');
 
 const corsOption = {
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002', 'https://zzkvcp-3000.csb.app', 'https://*.csb.app'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204
