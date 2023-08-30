@@ -547,6 +547,99 @@ module.exports = {
           }
         }
       }
+    },
+    '/pets/getalldog': {
+      get: {
+        tags: ['pets'],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: petResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/pets/getallcat': {
+      get: {
+        tags: ['pets'],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: petResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/pets/getallbird': {
+      get: {
+        tags: ['pets'],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: petResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/pets/getallreptile': {
+      get: {
+        tags: ['pets'],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: petResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/pets/love/{id}': {
+      post: {
+        tags: ['pets'],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'Pet Id',
+            schema: {
+              type: 'string'
+            }
+          }
+        ],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: petResponseBody
+              }
+            }
+          }
+        }
+      }
     }
   },
   consumes: ['application/json'],

@@ -10,7 +10,7 @@ const petSchema = new mongoose.Schema(
     about: { type: String, required: true },
     favorite: { type: String, required: true },
     image: { type: String, required: true },
-    loveCount: Number
+    loveCount: { type: Number, default: 0 }
   },
   { timestamps: { createdAt: 'createDate', updatedAt: 'updateDate' } }
 );
