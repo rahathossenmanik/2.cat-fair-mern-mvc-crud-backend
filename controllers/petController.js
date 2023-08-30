@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 const Pet = require('../models/PetSchema');
 const PetType = require('../models/PetTypeSchema');
 const Character = require('../models/CharacterSchema');
@@ -86,9 +85,7 @@ exports.delete = async (req, res) => {
 
 exports.dogList = async (req, res) => {
   try {
-    const data = await Pet.find({ petType: mongoose.Types.ObjectId('64ecb73ed3988b6470ea3687') })
-      .populate('petType')
-      .populate('character');
+    const data = await Pet.find({ petType: '64ecb73ed3988b6470ea3687' }).populate('petType').populate('character');
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send({ message: 'Internal Server Error' });
@@ -97,9 +94,7 @@ exports.dogList = async (req, res) => {
 
 exports.catList = async (req, res) => {
   try {
-    const data = await Pet.find({ petType: mongoose.Types.ObjectId('64ec9c3a0b80aac7042c8802') })
-      .populate('petType')
-      .populate('character');
+    const data = await Pet.find({ petType: '64ec9c3a0b80aac7042c8802' }).populate('petType').populate('character');
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send({ message: 'Internal Server Error' });
@@ -108,9 +103,7 @@ exports.catList = async (req, res) => {
 
 exports.birdList = async (req, res) => {
   try {
-    const data = await Pet.find({ petType: mongoose.Types.ObjectId('64ef2bdf577ab6435f7cfb1a') })
-      .populate('petType')
-      .populate('character');
+    const data = await Pet.find({ petType: '64ef2bdf577ab6435f7cfb1a' }).populate('petType').populate('character');
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send({ message: 'Internal Server Error' });
@@ -119,9 +112,7 @@ exports.birdList = async (req, res) => {
 
 exports.reptileList = async (req, res) => {
   try {
-    const data = await Pet.find({ petType: mongoose.Types.ObjectId('64ef2be7577ab6435f7cfb1c') })
-      .populate('petType')
-      .populate('character');
+    const data = await Pet.find({ petType: '64ef2be7577ab6435f7cfb1c' }).populate('petType').populate('character');
     res.status(200).send(data);
   } catch (error) {
     res.status(500).send({ message: 'Internal Server Error' });

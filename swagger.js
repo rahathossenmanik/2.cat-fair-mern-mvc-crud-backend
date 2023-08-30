@@ -205,7 +205,7 @@ module.exports = {
         }
       }
     },
-    '/petTypes/{id}': {
+    '/petTypes/getbyid/{id}': {
       get: {
         tags: ['petTypes'],
         parameters: [
@@ -325,7 +325,7 @@ module.exports = {
         }
       }
     },
-    '/characters/{id}': {
+    '/characters/getbyid/{id}': {
       get: {
         tags: ['characters'],
         parameters: [
@@ -445,7 +445,7 @@ module.exports = {
         }
       }
     },
-    '/pets/{id}': {
+    '/pets/getbyid/{id}': {
       get: {
         tags: ['pets'],
         parameters: [
