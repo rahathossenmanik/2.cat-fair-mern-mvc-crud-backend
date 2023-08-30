@@ -14,7 +14,7 @@ exports.list = async (req, res) => {
 
 exports.details = async (req, res) => {
   try {
-    const data = await Pet.findById(req.params.id);
+    const data = await Pet.findById(req.params.id).populate('petType').populate('character');
     res.status(200).send(data);
   } catch (error) {
     console.log(error);
