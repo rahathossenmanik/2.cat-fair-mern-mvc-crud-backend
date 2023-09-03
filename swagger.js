@@ -188,126 +188,6 @@ module.exports = {
     license: { name: 'MIT', url: 'https://opensource.org/licenses/MIT' }
   },
   paths: {
-    '/petTypes/getall': {
-      get: {
-        tags: ['PetTypes'],
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'array',
-                  items: petTypeResponseBody
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    '/petTypes/getbyid/{id}': {
-      get: {
-        tags: ['PetTypes'],
-        parameters: [
-          {
-            name: 'id',
-            in: 'path',
-            required: true,
-            description: 'Pet Type Id',
-            schema: {
-              type: 'string'
-            }
-          }
-        ],
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: petTypeResponseBody
-              }
-            }
-          }
-        }
-      }
-    },
-    '/petTypes/create': {
-      post: {
-        tags: ['PetTypes'],
-        requestBody: {
-          content: {
-            'application/json': {
-              schema: petTypeRequestBody
-            }
-          }
-        },
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: petTypeResponseBody
-              }
-            }
-          }
-        }
-      }
-    },
-    '/petTypes/update/{id}': {
-      put: {
-        tags: ['PetTypes'],
-        parameters: [
-          {
-            name: 'id',
-            in: 'path',
-            required: true,
-            description: 'Pet Type Id',
-            schema: {
-              type: 'string'
-            }
-          }
-        ],
-        requestBody: {
-          content: {
-            'application/json': {
-              schema: petTypeRequestBody
-            }
-          }
-        },
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: petTypeResponseBody
-              }
-            }
-          }
-        }
-      }
-    },
-    '/petTypes/delete/{id}': {
-      delete: {
-        tags: ['PetTypes'],
-        parameters: [
-          {
-            name: 'id',
-            in: 'path',
-            required: true,
-            description: 'Pet Type Id',
-            schema: {
-              type: 'string'
-            }
-          }
-        ],
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: petTypeResponseBody
-              }
-            }
-          }
-        }
-      }
-    },
     '/characters/getall': {
       get: {
         tags: ['Characters'],
@@ -422,6 +302,126 @@ module.exports = {
             content: {
               'application/json': {
                 schema: characterResponseBody
+              }
+            }
+          }
+        }
+      }
+    },
+    '/petTypes/getall': {
+      get: {
+        tags: ['PetTypes'],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: petTypeResponseBody
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/petTypes/getbyid/{id}': {
+      get: {
+        tags: ['PetTypes'],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'Pet Type Id',
+            schema: {
+              type: 'string'
+            }
+          }
+        ],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
+    },
+    '/petTypes/create': {
+      post: {
+        tags: ['PetTypes'],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: petTypeRequestBody
+            }
+          }
+        },
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
+    },
+    '/petTypes/update/{id}': {
+      put: {
+        tags: ['PetTypes'],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'Pet Type Id',
+            schema: {
+              type: 'string'
+            }
+          }
+        ],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: petTypeRequestBody
+            }
+          }
+        },
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: petTypeResponseBody
+              }
+            }
+          }
+        }
+      }
+    },
+    '/petTypes/delete/{id}': {
+      delete: {
+        tags: ['PetTypes'],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'Pet Type Id',
+            schema: {
+              type: 'string'
+            }
+          }
+        ],
+        responses: {
+          200: {
+            content: {
+              'application/json': {
+                schema: petTypeResponseBody
               }
             }
           }
