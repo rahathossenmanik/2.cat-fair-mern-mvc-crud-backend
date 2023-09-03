@@ -13,15 +13,15 @@ Simple Node JS + Express JS + Mongoose + MongoDB Project
 
 ## Related Projects (Pet Fair)
 
-## [Pet Fair - MERN-MVC-CRUD-Frontend](https://github.com/rahathossenmanik/1.cat-fair-mern-mvc-crud-frontend)
+## [Pet Fair - MERN-MVC-CRUD-Frontend](https://github.com/rahathossenmanik/1.pet-fair-mern-mvc-crud-frontend)
 
 [Live](https://zzkvcp-3000.csb.app)
 
-## [Pet Fair - MERN-MVC-CRUD-Backend](https://github.com/rahathossenmanik/2.cat-fair-mern-mvc-crud-backend)
+## [Pet Fair - MERN-MVC-CRUD-Backend](https://github.com/rahathossenmanik/2.pet-fair-mern-mvc-crud-backend)
 
 [Live](https://w58tnx-6543.csb.app/api)
 
-## [Pet Fair - NEST-CRUD-Backend](https://github.com/rahathossenmanik/6.cat-fair-nest-mongo-crud)
+## [Pet Fair - NEST-CRUD-Backend](https://github.com/rahathossenmanik/3.pet-fair-nest-mongo-crud)
 
 [Live](https://d65x2w-6543.csb.app/api)
 
