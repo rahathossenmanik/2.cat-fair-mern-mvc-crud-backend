@@ -190,7 +190,7 @@ module.exports = {
   paths: {
     '/petTypes/getall': {
       get: {
-        tags: ['petTypes'],
+        tags: ['PetTypes'],
         responses: {
           200: {
             content: {
@@ -207,7 +207,7 @@ module.exports = {
     },
     '/petTypes/getbyid/{id}': {
       get: {
-        tags: ['petTypes'],
+        tags: ['PetTypes'],
         parameters: [
           {
             name: 'id',
@@ -232,7 +232,7 @@ module.exports = {
     },
     '/petTypes/create': {
       post: {
-        tags: ['petTypes'],
+        tags: ['PetTypes'],
         requestBody: {
           content: {
             'application/json': {
@@ -253,7 +253,7 @@ module.exports = {
     },
     '/petTypes/update/{id}': {
       put: {
-        tags: ['petTypes'],
+        tags: ['PetTypes'],
         parameters: [
           {
             name: 'id',
@@ -285,7 +285,7 @@ module.exports = {
     },
     '/petTypes/delete/{id}': {
       delete: {
-        tags: ['petTypes'],
+        tags: ['PetTypes'],
         parameters: [
           {
             name: 'id',
@@ -310,7 +310,7 @@ module.exports = {
     },
     '/characters/getall': {
       get: {
-        tags: ['characters'],
+        tags: ['Characters'],
         responses: {
           200: {
             content: {
@@ -327,7 +327,7 @@ module.exports = {
     },
     '/characters/getbyid/{id}': {
       get: {
-        tags: ['characters'],
+        tags: ['Characters'],
         parameters: [
           {
             name: 'id',
@@ -352,7 +352,7 @@ module.exports = {
     },
     '/characters/create': {
       post: {
-        tags: ['characters'],
+        tags: ['Characters'],
         requestBody: {
           content: {
             'application/json': {
@@ -373,7 +373,7 @@ module.exports = {
     },
     '/characters/update/{id}': {
       put: {
-        tags: ['characters'],
+        tags: ['Characters'],
         parameters: [
           {
             name: 'id',
@@ -405,7 +405,7 @@ module.exports = {
     },
     '/characters/delete/{id}': {
       delete: {
-        tags: ['characters'],
+        tags: ['Characters'],
         parameters: [
           {
             name: 'id',
@@ -430,7 +430,7 @@ module.exports = {
     },
     '/pets/getall': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         responses: {
           200: {
             content: {
@@ -447,7 +447,7 @@ module.exports = {
     },
     '/pets/getbyid/{id}': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         parameters: [
           {
             name: 'id',
@@ -472,7 +472,7 @@ module.exports = {
     },
     '/pets/create': {
       post: {
-        tags: ['pets'],
+        tags: ['Pets'],
         requestBody: {
           content: {
             'application/json': {
@@ -493,7 +493,7 @@ module.exports = {
     },
     '/pets/update/{id}': {
       put: {
-        tags: ['pets'],
+        tags: ['Pets'],
         parameters: [
           {
             name: 'id',
@@ -525,7 +525,7 @@ module.exports = {
     },
     '/pets/delete/{id}': {
       delete: {
-        tags: ['pets'],
+        tags: ['Pets'],
         parameters: [
           {
             name: 'id',
@@ -550,7 +550,7 @@ module.exports = {
     },
     '/pets/getalldog': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         responses: {
           200: {
             content: {
@@ -567,7 +567,7 @@ module.exports = {
     },
     '/pets/getallcat': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         responses: {
           200: {
             content: {
@@ -584,7 +584,7 @@ module.exports = {
     },
     '/pets/getallbird': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         responses: {
           200: {
             content: {
@@ -601,7 +601,7 @@ module.exports = {
     },
     '/pets/getallreptile': {
       get: {
-        tags: ['pets'],
+        tags: ['Pets'],
         responses: {
           200: {
             content: {
@@ -618,7 +618,7 @@ module.exports = {
     },
     '/pets/love/{id}': {
       post: {
-        tags: ['pets'],
+        tags: ['Pets'],
         parameters: [
           {
             name: 'id',
