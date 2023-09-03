@@ -25,7 +25,9 @@ Simple Node JS + Express JS + Mongoose + MongoDB Project
 
 [Live](https://d65x2w-6543.csb.app/api)
 
-[Pet Fair - NEST-TypeORM-Postgre](https://github.com/rahathossenmanik/7.cat-fair-nest-typeorm-postgre)
+## [Pet Fair - NEST-TypeORM-Postgre](https://github.com/rahathossenmanik/4.pet-fair-nest-typeorm-postgre)
+
+[Live](https://5zzxwr-3000.csb.app/api)
 
 [Pet Fair - MERN-GraphQL-Frontend](https://github.com/rahathossenmanik/3.cat-fair-graphql-react-query-request)
 
