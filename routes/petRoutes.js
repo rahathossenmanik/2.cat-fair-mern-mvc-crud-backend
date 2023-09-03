@@ -12,6 +12,6 @@ router.get('/getalldog', petController.dogList);
 router.get('/getallcat', petController.catList);
 router.get('/getallbird', petController.birdList);
 router.get('/getallreptile', petController.reptileList);
-router.post('/love/:id', petController.loveReaction);
+router.put('/love/:id', petController.loveReaction);
 
 module.exports = router;

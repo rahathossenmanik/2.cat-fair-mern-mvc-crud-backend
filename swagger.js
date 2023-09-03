@@ -617,7 +617,7 @@ module.exports = {
       }
     },
     '/pets/love/{id}': {
-      post: {
+      put: {
         tags: ['Pets'],
         parameters: [
           {
