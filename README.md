@@ -29,6 +29,10 @@ Simple Node JS + Express JS + Mongoose + MongoDB Project
 
 [Live](https://5zzxwr-3000.csb.app/api)
 
+## [Pet Fair - Docker-Ruby-Rails-Postgres](https://github.com/rahathossenmanik/5.pet-fair-docker-ruby-rails-postgre)
+
+[Live](https://jh77qy-6543.csb.app/api)
+
 [Pet Fair - MERN-GraphQL-Frontend](https://github.com/rahathossenmanik/3.cat-fair-graphql-react-query-request)
 
 [Pet Fair - MERN-GraphQL-Backend](https://github.com/rahathossenmanik/4.cat-fair-mern-graphql-backend)
